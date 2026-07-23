@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title id="pageTitle">TI-PME | Solutions Informatiques</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #f8f9fc;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ============================================================ */
+        /*       ANIMATION D'ENTRÉE                                     */
+        /* ============================================================ */
+        .main-content {
+            opacity: 0;
+            animation: fadeInPage 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================================ */
+        /*       NAVBAR                                                 */
+        /* ============================================================ */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+            padding: 0 2rem;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-logo img {
+            height: 80px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: rgba(26, 58, 122, 0.08);
+            color: #1a3a7a;
+        }
+
+        .nav-links a.active {
+            background: linear-gradient(135deg, #1a3a7a, #c41e3a);
+            color: white;
+        }
+
+        .lang-btn {
+            background: rgba(26, 58, 122, 0.08);
+            border: 2px solid rgba(26, 58, 122, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #1a3a7a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .lang-btn:hover {
+            background: #1a3a7a;
+            color: white;
+            border-color: #1a3a7a;
+        }
+
+        .lang-btn .flag {
+            display: block;
+            flex-shrink: 0;
+        }
+
+        /* ============================================================ */
+        /*       HERO SECTION                                           */
+        /* ============================================================ */
+        .hero {
+            margin-top: 90px;
+            min-height: calc(100vh - 90px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #f8f9fc 0%, #eef2f7 50%, #e8edf5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(196, 30, 58, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(26, 58, 122, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.15), rgba(255, 215, 0, 0.10));
+            border: 1px solid rgba(255, 165, 0, 0.25);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #d4880f;
+            margin-bottom: 1.5rem;
+            animation: floatBadge 3s ease-in-out infinite;
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #f59e0b;
+            animation: pulseDot 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title .highlight-blue {
+            background: linear-gradient(135deg, #1a3a7a, #2563eb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-title .highlight-red {
+            background: linear-gradient(135deg, #c41e3a, #ef4444);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-title .highlight-orange {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-slogan {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: #475569;
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .hero-slogan strong {
+            color: #1a3a7a;
+            font-weight: 700;
+        }
+
+        .hero-slogan .highlight {
+            color: #c41e3a;
+            font-weight: 600;
+        }
+
+        .color-strip {
+            display: flex;
+            gap: 0;
+            width: 200px;
+            height: 4px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 auto 2rem;
+        }
+
+        .color-strip span {
+            flex: 1;
+            height: 100%;
+        }
+
+        .color-strip .c1 { background: #1a3a7a; }
+        .color-strip .c2 { background: #c41e3a; }
+        .color-strip .c3 { background: #f59e0b; }
+        .color-strip .c4 { background: #22c55e; }
+        .color-strip .c5 { background: #f97316; }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1a3a7a, #c41e3a);
+            color: white;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(26, 58, 122, 0.25);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(26, 58, 122, 0.35);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1a3a7a;
+            border: 2px solid rgba(26, 58, 122, 0.15);
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary:hover {
+            border-color: #1a3a7a;
+            background: rgba(26, 58, 122, 0.04);
+            transform: translateY(-3px);
+        }
+
+        .corner-logo {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .corner-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        /* ============================================================ */
+        /*       FOOTER                                                 */
+        /* ============================================================ */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #94a3b8;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            background: white;
+        }
+
+        /* ============================================================ */
+        /*       RESPONSIVE                                             */
+        /* ============================================================ */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1rem;
+                height: 70px;
+            }
+
+            .navbar-logo img {
+                height: 50px;
+            }
+
+            .nav-links a {
+                font-size: 0.75rem;
+                padding: 0.3rem 0.8rem;
+            }
+
+            .lang-btn {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.7rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+                min-height: calc(100vh - 70px);
+                margin-top: 70px;
+            }
+
+            .corner-logo {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .corner-logo img {
+                width: 80px;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 0.7rem 1.8rem;
+                font-size: 0.9rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                width: 100%;
+            }
+
+            .color-strip {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a {
+                font-size: 0.65rem;
+                padding: 0.25rem 0.6rem;
+            }
+
+            .lang-btn {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .navbar-logo img {
+                height: 40px;
+            }
+
+            .corner-logo img {
+                width: 60px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .navbar-logo span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!--       NAVBAR                                                 -->
+    <!-- ============================================================ -->
+    <nav class="navbar">
+        <a href="main.html" class="navbar-logo">
+            <img src="logo_main.png" alt="TI-PME">
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="main.html" class="active">Accueil</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <button class="lang-btn" id="langToggle">
+                    <svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> FR
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- ============================================================ -->
+    <!--       HERO SECTION                                           -->
+    <!-- ============================================================ -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+
+            <div class="hero-badge" id="heroBadge">
+                <span class="dot"></span>
+                Solutions IT sur mesure
+            </div>
+
+            <h1 class="hero-title" id="heroTitle">
+                <span class="highlight-blue">TI-PME</span><br>
+                <span class="highlight-red">Votre partenaire</span><br>
+                <span class="highlight-orange">informatique</span>
+            </h1>
+
+            <p class="hero-slogan" id="heroSlogan">
+                <strong>TI-PME</strong>, votre partenaire de confiance pour des 
+                <span class="highlight">solutions informatiques</span> innovantes, 
+                sur mesure et accessibles,<br>
+                conçues pour propulser les <strong>petites et moyennes entreprises</strong> 
+                vers l'excellence numérique.
+            </p>
+
+            <div class="color-strip">
+                <span class="c1"></span>
+                <span class="c2"></span>
+                <span class="c3"></span>
+                <span class="c4"></span>
+                <span class="c5"></span>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="services.html" class="btn-primary" id="btnPrimary">
+                    Découvrir nos services →
+                </a>
+                <a href="contact.html" class="btn-secondary" id="btnSecondary">
+                    Nous contacter
+                </a>
+            </div>
+
+        </div>
+
+        <div class="corner-logo">
+            <img src="logo_main.png" alt="TI-PME">
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!--       FOOTER                                                 -->
+    <!-- ============================================================ -->
+    <div class="footer" id="footerText">
+        &copy; 2026 TI-PME — Tous droits réservés
+    </div>
+
+    <!-- ============================================================ -->
+    <!--       JAVASCRIPT                                             -->
+    <!-- ============================================================ -->
+    <script>
+        // === Gestion de la langue avec localStorage ===
+        const langBtn = document.getElementById('langToggle');
+        let currentLang = localStorage.getItem('lang') || 'fr';
+
+        // --- Traductions ---
+        const translations = {
+            fr: {
+                title: 'TI-PME | Solutions Informatiques',
+                nav: ['Accueil', 'À propos', 'Services', 'Contact'],
+                badge: 'Solutions IT sur mesure',
+                titleLine1: 'TI-PME',
+                titleLine2: 'Votre partenaire',
+                titleLine3: 'informatique',
+                slogan: `<strong>TI-PME</strong>, votre partenaire de confiance pour des <span class="highlight">solutions informatiques</span> innovantes, sur mesure et accessibles,<br>conçues pour propulser les <strong>petites et moyennes entreprises</strong> vers l'excellence numérique.`,
+                btn1: 'Découvrir nos services →',
+                btn2: 'Nous contacter',
+                footer: '© 2026 TI-PME — Tous droits réservés'
+            },
+            en: {
+                title: 'TI-PME | IT Solutions',
+                nav: ['Home', 'About', 'Services', 'Contact'],
+                badge: 'Custom IT Solutions',
+                titleLine1: 'TI-PME',
+                titleLine2: 'Your partner',
+                titleLine3: 'in IT',
+                slogan: `<strong>TI-PME</strong>, your trusted partner for <span class="highlight">innovative IT solutions</span>, tailored and accessible,<br>designed to propel <strong>small and medium businesses</strong> toward digital excellence.`,
+                btn1: 'Discover our services →',
+                btn2: 'Contact us',
+                footer: '© 2026 TI-PME — All rights reserved'
+            }
+        };
+
+        function updateLanguage(lang) {
+            const t = translations[lang];
+
+            // 1. Titre de la page
+            document.getElementById('pageTitle').textContent = t.title;
+
+            // 2. Bouton de langue
+            langBtn.innerHTML = lang === 'fr'
+                ? '<svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> FR'
+                : '<svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> EN';
+
+            // 3. Onglets de navigation
+            const links = document.querySelectorAll('.nav-links a:not(.lang-btn)');
+            links.forEach((link, index) => {
+                if (index < t.nav.length) {
+                    link.textContent = t.nav[index];
+                }
+            });
+
+            // 4. Badge
+            document.getElementById('heroBadge').innerHTML = `<span class="dot"></span> ${t.badge}`;
+
+            // 5. Titre principal
+            document.getElementById('heroTitle').innerHTML = `
+                <span class="highlight-blue">${t.titleLine1}</span><br>
+                <span class="highlight-red">${t.titleLine2}</span><br>
+                <span class="highlight-orange">${t.titleLine3}</span>
+            `;
+
+            // 6. Slogan
+            document.getElementById('heroSlogan').innerHTML = t.slogan;
+
+            // 7. Boutons
+            document.getElementById('btnPrimary').textContent = t.btn1;
+            document.getElementById('btnSecondary').textContent = t.btn2;
+
+            // 8. Footer
+            document.getElementById('footerText').textContent = t.footer;
+
+            // 9. Sauvegarder la langue
+            localStorage.setItem('lang', lang);
+            currentLang = lang;
+        }
+
+        // === Événement de clic sur le bouton de langue ===
+        langBtn.addEventListener('click', function() {
+            const newLang = currentLang === 'fr' ? 'en' : 'fr';
+            updateLanguage(newLang);
+        });
+
+        // === Mise à jour du lien actif ===
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // === Initialisation ===
+        updateLanguage(currentLang);
+    </script>
+
+</body>
+</html>
