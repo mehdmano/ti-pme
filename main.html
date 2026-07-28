@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title id="pageTitle">TI-PME | Solutions Informatiques</title>
+    <title id="pageTitle">TI-PME | Solutions informatiques</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -20,9 +20,6 @@
             overflow-x: hidden;
         }
 
-        /* ============================================================ */
-        /*       ANIMATION D'ENTRÉE                                     */
-        /* ============================================================ */
         .main-content {
             opacity: 0;
             animation: fadeInPage 0.8s ease-out forwards;
@@ -122,8 +119,7 @@
         }
 
         .lang-btn .flag {
-            display: block;
-            flex-shrink: 0;
+            font-size: 1.1rem;
         }
 
         /* ============================================================ */
@@ -383,10 +379,6 @@
             .hero-buttons {
                 width: 100%;
             }
-
-            .color-strip {
-                width: 150px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -437,7 +429,7 @@
             <li><a href="contact.html">Contact</a></li>
             <li>
                 <button class="lang-btn" id="langToggle">
-                    <svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> FR
+                    <span class="flag">🇫🇷</span> FR
                 </button>
             </li>
         </ul>
@@ -451,7 +443,7 @@
 
             <div class="hero-badge" id="heroBadge">
                 <span class="dot"></span>
-                Solutions IT sur mesure
+                Solutions réseau sur mesure
             </div>
 
             <h1 class="hero-title" id="heroTitle">
@@ -461,19 +453,16 @@
             </h1>
 
             <p class="hero-slogan" id="heroSlogan">
-                <strong>TI-PME</strong>, votre partenaire de confiance pour des 
-                <span class="highlight">solutions informatiques</span> innovantes, 
-                sur mesure et accessibles,<br>
-                conçues pour propulser les <strong>petites et moyennes entreprises</strong> 
-                vers l'excellence numérique.
+                <strong>TI-PME</strong> propose des solutions informatique, en réseautique, en câblage structuré, en téléphonie IP et bientôt les caméras de surveillance —<br>
+                avec des interventions programmées en <strong>soirée</strong> et <strong>fin de semaine</strong>.
             </p>
 
             <div class="hero-buttons">
                 <a href="services.html" class="btn-primary" id="btnPrimary">
-                    Découvrir nos services →
+                    Découvrir les services →
                 </a>
                 <a href="contact.html" class="btn-secondary" id="btnSecondary">
-                    Nous contacter
+                    Contacter
                 </a>
             </div>
 
@@ -488,7 +477,7 @@
     <!--       FOOTER                                                 -->
     <!-- ============================================================ -->
     <div class="footer" id="footerText">
-        &copy; 2026 TI-PME — Tous droits réservés
+        &copy; 2026 TI-PME
     </div>
 
     <!-- ============================================================ -->
@@ -499,46 +488,42 @@
         const langBtn = document.getElementById('langToggle');
         let currentLang = localStorage.getItem('lang') || 'fr';
 
-        // --- Traductions ---
         const translations = {
             fr: {
-                title: 'TI-PME | Solutions Informatiques',
+                title: 'TI-PME | Solutions informatiques',
                 nav: ['Accueil', 'À propos', 'Services', 'Contact'],
-                badge: 'Solutions IT sur mesure',
+                badge: 'Solutions réseau sur mesure',
                 titleLine1: 'TI-PME',
                 titleLine2: 'Votre partenaire',
                 titleLine3: 'informatique',
-                slogan: `<strong>TI-PME</strong>, votre partenaire de confiance pour des <span class="highlight">solutions informatiques</span> innovantes, sur mesure et accessibles,<br>conçues pour propulser les <strong>petites et moyennes entreprises</strong> vers l'excellence numérique.`,
-                btn1: 'Découvrir nos services →',
-                btn2: 'Nous contacter',
-                footer: '© 2026 TI-PME — Tous droits réservés'
+                slogan: `<strong>TI-PME</strong> propose des solutions en informatique, en réseautique, dans le câblage structuré, en téléphonie IP et bientôt les caméras de surveillance —<br>avec des interventions programmées en <strong>soirée</strong> et <strong>fin de semaine</strong>.`,
+                btn1: 'Découvrir les services →',
+                btn2: 'Contacter',
+                footer: '© 2026 TI-PME'
             },
             en: {
                 title: 'TI-PME | IT Solutions',
                 nav: ['Home', 'About', 'Services', 'Contact'],
-                badge: 'Custom IT Solutions',
+                badge: 'Custom network solutions',
                 titleLine1: 'TI-PME',
                 titleLine2: 'Your partner',
                 titleLine3: 'in IT',
-                slogan: `<strong>TI-PME</strong>, your trusted partner for <span class="highlight">innovative IT solutions</span>, tailored and accessible,<br>designed to propel <strong>small and medium businesses</strong> toward digital excellence.`,
-                btn1: 'Discover our services →',
-                btn2: 'Contact us',
-                footer: '© 2026 TI-PME — All rights reserved'
+                slogan: `<strong>TI-PME</strong> offers IT solutions in networking, structured cabling, IP telephony and soon surveillance cameras —<br>with interventions scheduled in the <strong>evening</strong> and <strong>weekends</strong>.`,
+                btn1: 'Discover the services →',
+                btn2: 'Contact',
+                footer: '© 2026 TI-PME'
             }
         };
 
         function updateLanguage(lang) {
             const t = translations[lang];
 
-            // 1. Titre de la page
             document.getElementById('pageTitle').textContent = t.title;
 
-            // 2. Bouton de langue
             langBtn.innerHTML = lang === 'fr'
-                ? '<svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> FR'
-                : '<svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> EN';
+                ? '<span class="flag">🇫🇷</span> FR'
+                : '<span class="flag">🇬🇧</span> EN';
 
-            // 3. Onglets de navigation
             const links = document.querySelectorAll('.nav-links a:not(.lang-btn)');
             links.forEach((link, index) => {
                 if (index < t.nav.length) {
@@ -546,38 +531,28 @@
                 }
             });
 
-            // 4. Badge
             document.getElementById('heroBadge').innerHTML = `<span class="dot"></span> ${t.badge}`;
 
-            // 5. Titre principal
             document.getElementById('heroTitle').innerHTML = `
                 <span class="highlight-blue">${t.titleLine1}</span><br>
                 <span class="highlight-red">${t.titleLine2}</span><br>
                 <span class="highlight-orange">${t.titleLine3}</span>
             `;
 
-            // 6. Slogan
             document.getElementById('heroSlogan').innerHTML = t.slogan;
-
-            // 7. Boutons
             document.getElementById('btnPrimary').textContent = t.btn1;
             document.getElementById('btnSecondary').textContent = t.btn2;
-
-            // 8. Footer
             document.getElementById('footerText').textContent = t.footer;
 
-            // 9. Sauvegarder la langue
             localStorage.setItem('lang', lang);
             currentLang = lang;
         }
 
-        // === Événement de clic sur le bouton de langue ===
         langBtn.addEventListener('click', function() {
             const newLang = currentLang === 'fr' ? 'en' : 'fr';
             updateLanguage(newLang);
         });
 
-        // === Mise à jour du lien actif ===
         document.querySelectorAll('.nav-links a').forEach(link => {
             if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
                 link.classList.add('active');
@@ -586,7 +561,6 @@
             }
         });
 
-        // === Initialisation ===
         updateLanguage(currentLang);
     </script>
 

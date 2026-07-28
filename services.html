@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title id="pageTitle">TI-PME | Nos services</title>
+    <title id="pageTitle">TI-PME | Services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -119,8 +119,7 @@
         }
 
         .lang-btn .flag {
-            display: block;
-            flex-shrink: 0;
+            font-size: 1.1rem;
         }
 
         /* ============================================================ */
@@ -213,13 +212,13 @@
         }
 
         /* ============================================================ */
-        /*       SERVICES GRID                                          */
+        /*       SERVICES GRID (4 PILIERS)                              */
         /* ============================================================ */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin: 2rem 0 3rem;
+            margin: 2rem 0;
         }
 
         .service-card {
@@ -271,17 +270,35 @@
         }
 
         .service-card p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #64748b;
             line-height: 1.6;
         }
 
+        .service-card.soon {
+            opacity: 0.85;
+        }
+
+        .service-card .soon-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            padding: 0.25rem 0.7rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
         /* ============================================================ */
-        /*       BANNERS                                                */
+        /*       BANDE HORAIRE                                          */
         /* ============================================================ */
-        .banner-pme {
+        .hours-banner-services {
             background: linear-gradient(135deg, #1a3a7a, #c41e3a);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 2rem 2.5rem;
             margin: 2rem 0;
             color: white;
@@ -293,78 +310,36 @@
             box-shadow: 0 8px 30px rgba(26, 58, 122, 0.25);
         }
 
-        .banner-pme .icon-big {
+        .hours-banner-services .icon-big {
             font-size: 2.5rem;
+            flex-shrink: 0;
         }
 
-        .banner-pme .text {
+        .hours-banner-services .text {
             flex: 1;
         }
 
-        .banner-pme .text h3 {
-            font-size: 1.3rem;
+        .hours-banner-services .text h3 {
+            font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 0.2rem;
         }
 
-        .banner-pme .text p {
+        .hours-banner-services .text p {
             font-size: 1rem;
-            opacity: 0.9;
+            opacity: 0.95;
             line-height: 1.6;
         }
 
-        .banner-pme .badge {
+        .hours-banner-services .badge-hours {
             background: rgba(255, 255, 255, 0.15);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             white-space: nowrap;
-        }
-
-        .banner-free {
-            background: linear-gradient(135deg, #f59e0b, #f97316);
-            border-radius: 20px;
-            padding: 1.8rem 2.5rem;
-            margin: 2rem 0;
-            color: white;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            box-shadow: 0 8px 30px rgba(245, 158, 11, 0.25);
-        }
-
-        .banner-free .icon-big {
-            font-size: 2.5rem;
-        }
-
-        .banner-free .text {
-            flex: 1;
-        }
-
-        .banner-free .text h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.2rem;
-        }
-
-        .banner-free .text p {
-            font-size: 1rem;
-            opacity: 0.95;
-        }
-
-        .banner-free .badge-free {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* ============================================================ */
@@ -439,15 +414,13 @@
                 margin-top: 70px;
             }
 
-            .banner-pme,
-            .banner-free {
+            .hours-banner-services {
                 padding: 1.5rem;
                 flex-direction: column;
                 text-align: center;
             }
 
-            .banner-pme .badge,
-            .banner-free .badge-free {
+            .hours-banner-services .badge-hours {
                 white-space: normal;
             }
 
@@ -457,10 +430,6 @@
             }
 
             .intro-text {
-                font-size: 1rem;
-            }
-
-            .cta-box p {
                 font-size: 1rem;
             }
         }
@@ -517,7 +486,7 @@
             <li><a href="contact.html">Contact</a></li>
             <li>
                 <button class="lang-btn" id="langToggle">
-                    <svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> FR
+                    <span class="flag">🇫🇷</span> FR
                 </button>
             </li>
         </ul>
@@ -530,65 +499,47 @@
         <section class="page-hero">
             <div class="page-container">
 
-                <!-- Titre -->
-                <div class="page-subtitle" id="pageSubtitle">Ce que nous vous offrons</div>
+                <div class="page-subtitle" id="pageSubtitle">Ce qui est proposé</div>
                 <h1 class="page-title" id="pageTitleMain">
-                    <span class="highlight-blue">Nos</span>
+                    <span class="highlight-blue">Les</span>
                     <span class="highlight-red">services</span>
                 </h1>
 
-                <!-- Introduction -->
                 <p class="intro-text" id="introText">
-                    <strong>TI-PME</strong> vous propose une gamme complète de services informatiques 
-                    adaptés aux <span class="highlight">petites et moyennes entreprises</span>. 
-                    De l'installation à la réparation, en passant par la sécurité et le conseil, 
-                    nous sommes là pour vous accompagner — <strong>en soirée et en fin de semaine</strong>, 
-                    sans jamais interrompre votre activité.
+                    Des services techniques fiables, adaptés à votre réalité et à votre budget. 
+                    <span class="highlight">Soumission gratuite sur demande</span>, et des interventions 
+                    en <strong>soirée</strong> et en <strong>fin de semaine</strong>, 
+                    pour mieux répondre à vos besoins.
                 </p>
 
                 <!-- ============================================================ -->
-                <!--       GRILLE DES SERVICES                                   -->
+                <!--       4 PILIERS                                             -->
                 <!-- ============================================================ -->
                 <div class="services-grid" id="servicesGrid">
-                    <!-- Les cartes sont générées par JavaScript -->
+                    <!-- Généré par JavaScript -->
                 </div>
 
                 <!-- ============================================================ -->
-                <!--       BANDE PME                                             -->
+                <!--       BANDE HORAIRE                                         -->
                 <!-- ============================================================ -->
-                <div class="banner-pme">
-                    <span class="icon-big">🏢</span>
+                <div class="hours-banner-services">
+                    <span class="icon-big">🕐</span>
                     <div class="text">
-                        <h3 id="pmeTitle">Conçu pour les PME</h3>
-                        <p id="pmeText">
-                            Des services adaptés à vos besoins, avec une écoute personnalisée 
-                            et des interventions programmées selon vos horaires.
+                        <h3 id="hoursTitle">Des horaires adaptés aux commerces</h3>
+                        <p id="hoursText">
+                            Interventions en <strong>soirée</strong> et <strong>fin de semaine</strong> — 
+                            pour une disponibilité qui répond à vos besoins.
                         </p>
                     </div>
-                    <span class="badge" id="pmeBadge">📅 Soir & Week-end</span>
-                </div>
-
-                <!-- ============================================================ -->
-                <!--       BANDE GRATUITÉ                                        -->
-                <!-- ============================================================ -->
-                <div class="banner-free">
-                    <span class="icon-big">✅</span>
-                    <div class="text">
-                        <h3 id="freeTitle">Soumission gratuite</h3>
-                        <p id="freeText">
-                            Une évaluation de vos besoins, sans engagement — pour que vous sachiez 
-                            exactement ce dont vous avez besoin avant de commencer.
-                        </p>
-                    </div>
-                    <span class="badge-free" id="freeBadge">GRATUIT</span>
+                    <span class="badge-hours" id="hoursBadge">🌙 Soir & 📅 Week-end</span>
                 </div>
 
                 <!-- ============================================================ -->
                 <!--       CTA FINAL                                             -->
                 <!-- ============================================================ -->
                 <div class="cta-box">
-                    <p id="ctaText">Vous avez un projet ? Une question ?</p>
-                    <a href="contact.html" class="btn-cta" id="ctaBtn">📞 Contactez-nous</a>
+                    <p id="ctaText">Un projet ? Une question ?</p>
+                    <a href="contact.html" class="btn-cta" id="ctaBtn">📞 Contacter</a>
                 </div>
 
             </div>
@@ -598,7 +549,7 @@
         <!--       FOOTER                                                 -->
         <!-- ============================================================ -->
         <div class="footer" id="footerText">
-            &copy; 2026 TI-PME — Tous droits réservés
+            &copy; 2026 TI-PME
         </div>
     </div>
 
@@ -610,69 +561,50 @@
         const langBtn = document.getElementById('langToggle');
         let currentLang = localStorage.getItem('lang') || 'fr';
 
-        // === Données des services ===
+        // === 4 Piliers ===
         const servicesData = {
             fr: [
-                { emoji: '🌐', title: 'Réseau et câblage', desc: 'Installation de réseaux structurés, switchs, routeurs et points d\'accès WiFi.' },
-                { emoji: '🔒', title: 'Sécurité informatique', desc: 'Firewall, VLAN, antivirus, sauvegardes — protégez vos données efficacement.' },
-                { emoji: '📷', title: 'Vidéosurveillance', desc: 'Caméras IP, enregistrement, accès à distance, visualisation en temps réel.' },
-                { emoji: '🚪', title: 'Contrôle d\'accès', desc: 'Scanneurs de cartes, serrures électroniques, ouverture sécurisée des portes.' },
-                { emoji: '📞', title: 'Téléphonie IP', desc: 'Installation et configuration de systèmes téléphoniques modernes et flexibles.' },
-                { emoji: '💳', title: 'Solutions de paiement', desc: 'Modules Interac, caisses enregistreuses, terminaux de paiement.' },
-                { emoji: '🖥️', title: 'Matériel multimédia', desc: 'Projecteurs, écrans intelligents, télévisions — installez et configurez.' },
-                { emoji: '⚙️', title: 'Diagnostic et support', desc: 'Dépannage, résolution de problèmes, optimisation des performances.' },
-                { emoji: '🔧', title: 'Réparation d\'appareils', desc: 'Ordinateurs, portables, imprimantes, serveurs — réparation rapide et fiable.' },
-                { emoji: '💾', title: 'Récupération de données', desc: 'Récupération de fichiers après une panne, un effacement ou un crash.' },
-                { emoji: '💰', title: 'Achat et vente', desc: 'Matériel neuf ou d\'occasion, reprise de vos équipements usagés.' }
+                { emoji: '🌐', title: 'Réseau, Wi-Fi et configuration sécurisée', desc: 'Routeurs, commutateurs, pare-feu, VPN et segmentation de réseau.' },
+                { emoji: '🔌', title: 'Câblage structuré', desc: 'Câblage Cat6, sorties réseau, câblage téléphonique et baies de brassage.' },
+                { emoji: '📞', title: 'Téléphonie IP', desc: 'Installation de systèmes PBX, téléphones IP et configurations sur mesure.' },
+                { emoji: '🎬', title: 'Multimédia', desc: 'Installation de projecteurs, toiles, écrans et haut-parleurs.' },
+                { emoji: '📷', title: 'Caméras de surveillance IP', desc: 'Installation, configuration, accès local et mobile.', soon: true, soonLabel: 'Bientôt' }
             ],
             en: [
-                { emoji: '🌐', title: 'Network & Cabling', desc: 'Structured network installation, switches, routers, and WiFi access points.' },
-                { emoji: '🔒', title: 'IT Security', desc: 'Firewall, VLAN, antivirus, backups — protect your data effectively.' },
-                { emoji: '📷', title: 'Video Surveillance', desc: 'IP cameras, recording, remote access, real-time monitoring.' },
-                { emoji: '🚪', title: 'Access Control', desc: 'Card scanners, electronic locks, secure door entry systems.' },
-                { emoji: '📞', title: 'IP Telephony', desc: 'Installation and configuration of modern, flexible phone systems.' },
-                { emoji: '💳', title: 'Payment Solutions', desc: 'Interac modules, cash registers, payment terminals.' },
-                { emoji: '🖥️', title: 'Multimedia Equipment', desc: 'Projectors, smart boards, TVs — install and configure.' },
-                { emoji: '⚙️', title: 'Diagnostic & Support', desc: 'Troubleshooting, problem resolution, performance optimization.' },
-                { emoji: '🔧', title: 'Device Repair', desc: 'Computers, laptops, printers, servers — fast and reliable repair.' },
-                { emoji: '💾', title: 'Data Recovery', desc: 'File recovery after a crash, accidental deletion, or system failure.' },
-                { emoji: '💰', title: 'Buy & Sell', desc: 'New or used equipment, trade-in for your outdated devices.' }
+                { emoji: '🌐', title: 'Network, WiFi & Secure Configuration', desc: 'Routers, switches, firewalls, VPN and network segmentation.' },
+                { emoji: '🔌', title: 'Structured Cabling', desc: 'Cat6 cabling, network outlets, telephone cabling and patch panels.' },
+                { emoji: '📞', title: 'IP Telephony', desc: 'PBX system installation, IP phones and custom configurations.' },
+                { emoji: '🎬', title: 'Multimedia', desc: 'Installation of projectors, screens, displays and speakers.' },
+                { emoji: '📷', title: 'IP Surveillance Cameras', desc: 'Installation, configuration, local and mobile access.', soon: true, soonLabel: 'Coming soon' }
             ]
         };
 
-        // === Traductions texte ===
         const translations = {
             fr: {
-                title: 'TI-PME | Nos services',
+                title: 'TI-PME | Services',
                 nav: ['Accueil', 'À propos', 'Services', 'Contact'],
-                subtitle: 'Ce que nous vous offrons',
-                titleMain: '<span class="highlight-blue">Nos</span> <span class="highlight-red">services</span>',
-                intro: `<strong>TI-PME</strong> vous propose une gamme complète de services informatiques adaptés aux <span class="highlight">petites et moyennes entreprises</span>. De l'installation à la réparation, en passant par la sécurité et le conseil, nous sommes là pour vous accompagner — <strong>en soirée et en fin de semaine</strong>, sans jamais interrompre votre activité.`,
-                pmeTitle: 'Conçu pour les PME',
-                pmeText: 'Des services adaptés à vos besoins, avec une écoute personnalisée et des interventions programmées selon vos horaires.',
-                pmeBadge: '📅 Soir & Week-end',
-                freeTitle: 'Soumission gratuite',
-                freeText: 'Une évaluation de vos besoins, sans engagement — pour que vous sachiez exactement ce dont vous avez besoin avant de commencer.',
-                freeBadge: 'GRATUIT',
-                ctaText: 'Vous avez un projet ? Une question ?',
-                ctaBtn: '📞 Contactez-nous',
-                footer: '© 2026 TI-PME — Tous droits réservés'
+                subtitle: 'Ce qui est proposé',
+                titleMain: '<span class="highlight-blue">Les</span> <span class="highlight-red">services</span>',
+                intro: `Des services techniques fiables, adaptés à votre réalité et à votre budget. <span class="highlight">Soumission gratuite sur demande</span>, et des interventions en <strong>soirée</strong> et en <strong>fin de semaine</strong>, pour mieux répondre à vos besoins.`,
+                hoursTitle: 'Des horaires adaptés aux commerces',
+                hoursText: 'Interventions en <strong>soirée</strong> et <strong>fin de semaine</strong> — pour une disponibilité qui répond à vos besoins.',
+                hoursBadge: '🌙 Soir & 📅 Week-end',
+                ctaText: 'Un projet ? Une question ?',
+                ctaBtn: '📞 Contacter',
+                footer: '© 2026 TI-PME'
             },
             en: {
-                title: 'TI-PME | Our Services',
+                title: 'TI-PME | Services',
                 nav: ['Home', 'About', 'Services', 'Contact'],
-                subtitle: 'What we offer',
-                titleMain: '<span class="highlight-blue">Our</span> <span class="highlight-red">services</span>',
-                intro: `<strong>TI-PME</strong> offers a complete range of IT services tailored to <span class="highlight">small and medium businesses</span>. From installation to repair, security to consulting, we're here to support you — <strong>evenings and weekends</strong>, without ever interrupting your operations.`,
-                pmeTitle: 'Designed for SMBs',
-                pmeText: 'Services tailored to your needs, with personalized support and interventions scheduled at your convenience.',
-                pmeBadge: '📅 Evening & Weekend',
-                freeTitle: 'Free quote',
-                freeText: 'A no-obligation needs assessment — so you know exactly what you need before you start.',
-                freeBadge: 'FREE',
-                ctaText: 'Have a project? A question?',
-                ctaBtn: '📞 Contact us',
-                footer: '© 2026 TI-PME — All rights reserved'
+                subtitle: 'What is offered',
+                titleMain: '<span class="highlight-blue">The</span> <span class="highlight-red">services</span>',
+                intro: `Reliable technical services, tailored to your reality and your budget. <span class="highlight">Free quote on request</span>, with interventions in the <strong>evening</strong> and on <strong>weekends</strong>, to better meet your needs.`,
+                hoursTitle: 'Hours adapted to businesses',
+                hoursText: 'Interventions in the <strong>evening</strong> and <strong>weekends</strong> — for availability that meets your needs.',
+                hoursBadge: '🌙 Evening & 📅 Weekend',
+                ctaText: 'A project? A question?',
+                ctaBtn: '📞 Contact',
+                footer: '© 2026 TI-PME'
             }
         };
 
@@ -680,7 +612,8 @@
             const grid = document.getElementById('servicesGrid');
             const services = servicesData[lang];
             grid.innerHTML = services.map(s => `
-                <div class="service-card">
+                <div class="service-card${s.soon ? ' soon' : ''}">
+                    ${s.soon ? `<span class="soon-badge">${s.soonLabel}</span>` : ''}
                     <span class="emoji">${s.emoji}</span>
                     <h4>${s.title}</h4>
                     <p>${s.desc}</p>
@@ -691,15 +624,12 @@
         function updateLanguage(lang) {
             const t = translations[lang];
 
-            // 1. Titre de la page
             document.getElementById('pageTitle').textContent = t.title;
 
-            // 2. Bouton de langue
             langBtn.innerHTML = lang === 'fr'
-                ? '<svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> FR'
-                : '<svg class="flag" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18"/><path d="M12 3a15 15 0 0 0 0 18"/></svg> EN';
+                ? '<span class="flag">🇫🇷</span> FR'
+                : '<span class="flag">🇬🇧</span> EN';
 
-            // 3. Onglets de navigation
             const links = document.querySelectorAll('.nav-links a:not(.lang-btn)');
             links.forEach((link, index) => {
                 if (index < t.nav.length) {
@@ -707,47 +637,27 @@
                 }
             });
 
-            // 4. Sous-titre
             document.getElementById('pageSubtitle').textContent = t.subtitle;
-
-            // 5. Titre principal
             document.getElementById('pageTitleMain').innerHTML = t.titleMain;
-
-            // 6. Introduction
             document.getElementById('introText').innerHTML = t.intro;
-
-            // 7. Bande PME
-            document.getElementById('pmeTitle').textContent = t.pmeTitle;
-            document.getElementById('pmeText').textContent = t.pmeText;
-            document.getElementById('pmeBadge').textContent = t.pmeBadge;
-
-            // 8. Bande gratuite
-            document.getElementById('freeTitle').textContent = t.freeTitle;
-            document.getElementById('freeText').textContent = t.freeText;
-            document.getElementById('freeBadge').textContent = t.freeBadge;
-
-            // 9. CTA
+            document.getElementById('hoursTitle').textContent = t.hoursTitle;
+            document.getElementById('hoursText').innerHTML = t.hoursText;
+            document.getElementById('hoursBadge').textContent = t.hoursBadge;
             document.getElementById('ctaText').textContent = t.ctaText;
             document.getElementById('ctaBtn').textContent = t.ctaBtn;
-
-            // 10. Footer
             document.getElementById('footerText').textContent = t.footer;
 
-            // 11. Services grid
             renderServices(lang);
 
-            // 12. Sauvegarder la langue
             localStorage.setItem('lang', lang);
             currentLang = lang;
         }
 
-        // === Événement de clic sur le bouton de langue ===
         langBtn.addEventListener('click', function() {
             const newLang = currentLang === 'fr' ? 'en' : 'fr';
             updateLanguage(newLang);
         });
 
-        // === Mise à jour du lien actif ===
         document.querySelectorAll('.nav-links a').forEach(link => {
             if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
                 link.classList.add('active');
@@ -756,7 +666,6 @@
             }
         });
 
-        // === Initialisation ===
         updateLanguage(currentLang);
     </script>
 
